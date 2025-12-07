@@ -12,9 +12,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <Link to="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-serif font-bold text-xl">R</span>
-              </div>
+              <img src="/favicon.png" alt="Logo" className="w-10 h-10 rounded-lg object-contain" />
               <div>
                 <h2 className="font-serif font-bold text-lg text-foreground leading-tight">
                   Rajabakkiam

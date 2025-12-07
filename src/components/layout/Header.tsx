@@ -22,14 +22,14 @@ export function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-serif font-bold text-xl">R</span>
-            </div>
-            <div className="hidden sm:block">
-              <h1 className="font-serif font-bold text-lg text-foreground leading-tight">
-                Rajabakkiam
-              </h1>
-              <p className="text-xs text-muted-foreground -mt-0.5">Traders</p>
+            <div className="flex items-center gap-3">
+              <img src="/favicon.png" alt="Logo" className="w-10 h-10 rounded-lg object-contain" />
+              <div className="hidden sm:block">
+                <h1 className="font-serif font-bold text-lg text-foreground leading-tight">
+                  Rajabakkiam
+                </h1>
+                <p className="text-xs text-muted-foreground -mt-0.5">Traders</p>
+              </div>
             </div>
           </Link>
 
