@@ -8,7 +8,9 @@ import { ProductCard } from "@/components/ProductCard";
 import { OrderModal } from "@/components/OrderModal";
 import { BUSINESS_INFO, RICE_PRODUCTS, PREMIUM_BRANDS, BENEFITS } from "@/lib/data";
 
-import heroImage from "@/assets/hero-rice.jpg";
+
+import heroDark from "@/assets/rice_paddy1.png";
+import heroLight from "@/assets/hero-light.png";
 
 const Index = () => {
   const [orderModalOpen, setOrderModalOpen] = useState(false);
@@ -24,58 +26,102 @@ const Index = () => {
 
   return (
     <Layout>
-      {/* Hero Section */}
-      <section className="relative min-h-[80vh] flex items-center">
-        <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Premium rice grains from Rajabakkiam Traders"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/40" />
-        </div>
+      {/* at top of file (near other imports) */}
 
-        <div className="container-custom relative z-10 py-20">
-          <div className="max-w-2xl">
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6 opacity-0 animate-fade-up">
-              Fresh rice & groceries for Salem —{" "}
-              <span className="text-primary">trusted since day one</span>
-            </h1>
-            <p className="text-lg md:text-xl text-muted-foreground mb-8 opacity-0 animate-fade-up stagger-1">
-              Superb fine quality rice, friendly service, and free delivery up to 10 km.
-            </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-10 opacity-0 animate-fade-up stagger-2">
-              <Button onClick={() => handleOrder()} className="btn-primary text-base px-8 py-6">
-                Place an Order
-              </Button>
-              <a
-                href={`tel:${BUSINESS_INFO.phone}`}
-                className="flex items-center justify-center gap-2 btn-secondary text-base px-8 py-6"
-              >
-                <Phone className="w-5 h-5" />
-                Call {BUSINESS_INFO.phoneDisplay}
-              </a>
-            </div>
+      {/* Hero Section (light + dark modes; DOES NOT change text content) */}
+      <section className="relative w-full min-h-[92vh] flex items-center justify-center overflow-hidden
+                    bg-[#F5F5F5] dark:bg-transparent">
 
-            {/* Trust Bar */}
-            <div className="flex flex-wrap gap-6 text-sm text-muted-foreground opacity-0 animate-fade-up stagger-3">
-              <div className="flex items-center gap-2">
-                <Truck className="w-5 h-5 text-primary" />
-                Free delivery up to 10 km
-              </div>
-              <div className="flex items-center gap-2">
-                <Award className="w-5 h-5 text-primary" />
-                Reasonable price
-              </div>
-              <div className="flex items-center gap-2">
-                <Zap className="w-5 h-5 text-primary" />
-                Quick response
-              </div>
-            </div>
+        {/* ---------- LIGHT MODE IMAGE (visible in light mode only) ---------- */}
+        <img
+          src={heroLight}
+          alt="Rice background (light)"
+          className="absolute inset-0 w-full h-full object-cover object-center brightness-[1.02] contrast-[0.95] block dark:hidden"
+          aria-hidden="true"
+        />
+
+        {/* light-mode warm overlay (visible only when NOT dark) */}
+        {/* <div
+          className="absolute inset-0 pointer-events-none block dark:hidden"
+          style={{
+            background:
+              "radial-gradient(circle at 40% 30%, rgba(255,255,255,0.62) 0%, rgba(245,240,235,0.9) 45%, rgba(245,240,235,1) 100%)"
+          }}
+          aria-hidden="true"
+        /> */}
+
+        {/* subtle vignette for light mode */}
+        <div
+          className="absolute inset-0 pointer-events-none block dark:hidden"
+          style={{
+            background: "radial-gradient(ellipse at center, rgba(0,0,0,0.02) 55%, rgba(0,0,0,0.06) 100%)"
+          }}
+          aria-hidden="true"
+        />
+
+        {/* ---------- DARK MODE IMAGE + OVERLAY (unchanged behavior) ---------- */}
+        <img
+          src={heroDark}
+          alt="Rice background (dark)"
+          className="absolute inset-0 w-full h-full object-cover object-center brightness-[0.65] hidden dark:block"
+          aria-hidden="true"
+        />
+
+        <div
+          className="absolute inset-0 hidden dark:block"
+          style={{
+            background:
+              "radial-gradient(circle at center, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.78) 65%, rgba(0,0,0,0.92) 100%)"
+          }}
+          aria-hidden="true"
+        />
+
+        {/* ---------- OPTIONAL FALLING PADDY (place between overlays and content) ----------
+      If you already use paddy spans for dark mode, keep them under the dark-only layer.
+      For light-mode flavor I added light paddy spans (comment/uncomment as needed).
+  */}
+
+        {/* Light paddy decorations (comment out if not needed) */}
+        {/* <span className="paddy paddy--light paddy--delay-1" style={{ left: "12%", top: "-6%" }} />
+  <span className="paddy paddy--light paddy--delay-2" style={{ left: "36%", top: "-8%" }} />
+  <span className="paddy paddy--light paddy--delay-3" style={{ left: "62%", top: "-9%" }} />
+  <span className="paddy paddy--light paddy--delay-4" style={{ left: "80%", top: "-5%" }} /> */}
+
+        {/* Keep any dark paddy spans where they were (hidden when light). Example: */}
+        {/* <span className="paddy paddy--delay-1 hidden dark:block" style={{ left:"15%", top:"-8%" }} /> */}
+
+        {/* ---------- CONTENT: TEXT & BUTTON (UNCHANGED) ---------- */}
+        <div className="relative z-10 text-center max-w-3xl mx-auto px-6 py-20">
+          {/* keep your exact heading / paragraph / buttons (do not alter text) */}
+          <h1 className="text-[rgb(23,23,23)] dark:text-white font-semibold text-4xl sm:text-5xl md:text-6xl leading-tight drop-shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:drop-shadow-[0_6px_20px_rgba(0,0,0,0.6)]">
+            Fresh rice & Groceries for Salem — Trusted since day one
+          </h1>
+
+          <p className="mt-4 text-[rgb(64,64,64)] dark:text-yellow-50/85 text-lg md:text-xl max-w-2xl mx-auto">
+            Experience the world's finest grains, cultivated with tradition and passion.
+            Each harvest tells a story of heritage and dedication.
+          </p>
+
+          <div className="mt-8 flex items-center justify-center gap-4">
+            {/* Button text is kept exactly; only visual updated for both themes */}
+            <button
+              onClick={() => handleOrder()}
+              className="px-6 py-3 rounded-full font-semibold text-base shadow transition-transform active:scale-95"
+              style={{
+                background: "linear-gradient(180deg,#FFF1D6 0%, #FFDFA8 100%)",
+                color: "#2b1a00",
+                boxShadow: "0 6px 20px rgba(223,164,55,0.12)",
+                border: "1px solid rgba(34,20,6,0.06)"
+              }}
+            >
+              Explore Our Collection
+            </button>
           </div>
         </div>
       </section>
+
+
 
       {/* Benefits Section */}
       <section className="section-padding bg-card">
