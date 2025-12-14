@@ -24,7 +24,7 @@ export function Header() {
           <Link to="/" className="flex items-center gap-2">
             <div className="flex items-center gap-3">
               <img src="/favicon.png" alt="Logo" className="w-10 h-10 rounded-lg object-contain" />
-              <div className="hidden sm:block">
+              <div className="block">
                 <h1 className="font-serif font-bold text-lg text-foreground leading-tight">
                   Raajabaackiam
                 </h1>
