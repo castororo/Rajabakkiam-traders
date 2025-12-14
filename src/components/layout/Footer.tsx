@@ -15,7 +15,7 @@ export function Footer() {
               <img src="/favicon.png" alt="Logo" className="w-10 h-10 rounded-lg object-contain" />
               <div>
                 <h2 className="font-serif font-bold text-lg text-foreground leading-tight">
-                  Rajabakkiam
+                  Raajabaackiam
                 </h2>
                 <p className="text-xs text-muted-foreground -mt-0.5">Traders</p>
               </div>
@@ -89,7 +89,7 @@ export function Footer() {
 
         <div className="border-t border-border mt-10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} Rajabakkiam Traders. All rights reserved.
+            © {currentYear} Raajabaackiam Traders. All rights reserved.
           </p>
           <p className="text-sm text-muted-foreground">
             Call to order: {BUSINESS_INFO.phoneDisplay}

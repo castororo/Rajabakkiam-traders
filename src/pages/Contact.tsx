@@ -8,6 +8,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { BUSINESS_INFO } from "@/lib/data";
 import { useToast } from "@/hooks/use-toast";
 
+import contactHeroBg from "@/assets/contact-hero-gen.png";
+
 const Contact = () => {
   const { toast } = useToast();
   const [formData, setFormData] = useState({
@@ -54,12 +56,16 @@ const Contact = () => {
   return (
     <Layout>
       {/* Hero */}
-      <section className="section-padding bg-card">
-        <div className="container-custom text-center">
-          <h1 className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-4">
+      <section
+        className="section-padding relative bg-cover bg-center min-h-[40vh] flex items-center"
+        style={{ backgroundImage: `url(${contactHeroBg})` }}
+      >
+        <div className="absolute inset-0 bg-black/60" /> {/* Overlay */}
+        <div className="container-custom text-center relative z-10">
+          <h1 className="font-serif text-4xl md:text-5xl font-bold text-white mb-4">
             Contact Us & Place Your Order
           </h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-white/90 max-w-2xl mx-auto">
             Reach out for inquiries, bulk orders, or to speak with our dedicated team.
             We're here to assist you.
           </p>
@@ -167,7 +173,7 @@ const Contact = () => {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  title="Rajabakkiam Traders location in Salem"
+                  title="Raajabaackiam Traders location in Salem"
                 />
               </div>
 

@@ -1,4 +1,4 @@
-# Rajabakkiam Traders
+# Raajabaackiam Traders
 
 ## Project info
 

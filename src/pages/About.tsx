@@ -57,19 +57,19 @@ const About = () => {
             </h2>
             <div className="prose prose-invert mx-auto">
               <p className="text-muted-foreground leading-relaxed mb-6">
-                Founded with a passion for bringing the world's finest rice to your kitchen, 
-                Rajabakkiam Traders has grown from a small family venture into a trusted name 
+                Founded with a passion for bringing the world's finest rice to your kitchen,
+                Raajabaackiam Traders has grown from a small family venture into a trusted name
                 for households across Salem, Tamil Nadu.
               </p>
               <p className="text-muted-foreground leading-relaxed mb-6">
-                We partner with trusted brands like <strong className="text-foreground">CHERRY</strong> (Kangayam), 
-                <strong className="text-foreground"> RETTAIKILI</strong> (Salem), 
-                <strong className="text-foreground"> MALGOVA</strong> (Kangayam), 
-                <strong className="text-foreground"> India Gate</strong>, and more to bring you 
+                We partner with trusted brands like <strong className="text-foreground">CHERRY</strong> (Kangayam),
+                <strong className="text-foreground"> RETTAIKILI</strong> (Salem),
+                <strong className="text-foreground"> MALGOVA</strong> (Kangayam),
+                <strong className="text-foreground"> India Gate</strong>, and more to bring you
                 the finest rice varieties for every occasion.
               </p>
               <p className="text-muted-foreground leading-relaxed">
-                Our promise is simple: quality products at fair prices, delivered with friendly 
+                Our promise is simple: quality products at fair prices, delivered with friendly
                 service and a personal touch that only a local trader can provide.
               </p>
             </div>
@@ -113,7 +113,7 @@ const About = () => {
             Join Our Story
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-            Experience the difference that passion and heritage make. Explore our collection 
+            Experience the difference that passion and heritage make. Explore our collection
             and bring the taste of quality to your table.
           </p>
           <Button asChild className="btn-primary text-base px-8 py-6">

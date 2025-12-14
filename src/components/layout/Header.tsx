@@ -26,7 +26,7 @@ export function Header() {
               <img src="/favicon.png" alt="Logo" className="w-10 h-10 rounded-lg object-contain" />
               <div className="hidden sm:block">
                 <h1 className="font-serif font-bold text-lg text-foreground leading-tight">
-                  Rajabakkiam
+                  Raajabaackiam
                 </h1>
                 <p className="text-xs text-muted-foreground -mt-0.5">Traders</p>
               </div>

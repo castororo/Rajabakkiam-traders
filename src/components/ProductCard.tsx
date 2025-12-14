@@ -11,6 +11,24 @@ import riceIdly from "@/assets/rice-idly.jpg";
 import millets from "@/assets/millets.jpg";
 import groceries from "@/assets/groceries.jpg";
 
+// Brand imports
+import malgovaMalligai from "@/assets/Malgova_malligai.jpeg";
+import malgovaKichadi from "@/assets/Malkova_kichadi.jpeg";
+import rettaikiliKolam from "@/assets/Rettaikili_Kolam.jpeg";
+import rettaikiliPonni from "@/assets/Rettaikili_ponni.jpeg";
+
+// Generated imports
+import whitePonniGen from "@/assets/white-ponni-gen.png";
+import bptPonniGen from "@/assets/bpt-ponni-gen.png";
+import dlxPonniGen from "@/assets/dlx-ponni-gen.png";
+import neiKichadiGen from "@/assets/nei-kichadi-gen.png";
+import wheatFlourGen from "@/assets/wheat-flour-gen.png";
+import edibleOilGen from "@/assets/edible-oil-gen.png";
+import sugarGen from "@/assets/sugar-gen.png";
+import cherryRiceGen from "@/assets/cherry-rice-gen.png";
+import doubleDeerGen from "@/assets/double-deer-gen.png";
+import royalBulletGen from "@/assets/royal-bullet-gen.png";
+
 const imageMap: Record<string, string> = {
   "rice-ponni": ricePonni,
   "rice-basmati": riceBasmati,
@@ -20,6 +38,20 @@ const imageMap: Record<string, string> = {
   "rice-idly": riceIdly,
   "millets": millets,
   "groceries": groceries,
+  "malgova-malligai": malgovaMalligai,
+  "malgova-kichadi": malgovaKichadi,
+  "rettaikili-kolam": rettaikiliKolam,
+  "rettaikili-ponni": rettaikiliPonni,
+  "white-ponni": whitePonniGen,
+  "bpt-ponni": bptPonniGen,
+  "dlx-ponni": dlxPonniGen,
+  "nei-kichadi": neiKichadiGen,
+  "wheat-flour": wheatFlourGen,
+  "edible-oil": edibleOilGen,
+  "sugar": sugarGen,
+  "cherry-brand": cherryRiceGen,
+  "double-deer": doubleDeerGen,
+  "royal-bullet": royalBulletGen,
 };
 
 interface Product {

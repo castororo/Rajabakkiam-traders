@@ -40,7 +40,7 @@ const Products = () => {
         <div className="absolute inset-0">
           <img
             src={heroImage}
-            alt="Rice varieties at Rajabakkiam Traders"
+            alt="Rice varieties at Raajabaackiam Traders"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-background/90" />
@@ -83,8 +83,8 @@ const Products = () => {
                   key={cat.key}
                   onClick={() => setActiveCategory(cat.key as typeof activeCategory)}
                   className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors ${activeCategory === cat.key
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-muted text-muted-foreground hover:bg-muted/80"
+                    ? "bg-primary text-primary-foreground"
+                    : "bg-muted text-muted-foreground hover:bg-muted/80"
                     }`}
                 >
                   {cat.label}
