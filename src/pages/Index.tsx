@@ -127,7 +127,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-4 md:gap-8">
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(160px,1fr))] gap-4 md:gap-8">
             {BENEFITS.map((benefit, index) => (
               <BenefitCard key={benefit.title} benefit={benefit} index={index} />
             ))}
@@ -156,7 +156,7 @@ const Index = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6">
             {featuredProducts.map((product) => (
               <ProductCard
                 key={product.id}
@@ -188,7 +188,7 @@ const Index = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
+          <div className="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] gap-6">
             {featuredBrands.map((brand) => (
               <ProductCard key={brand.id} product={brand} />
             ))}
