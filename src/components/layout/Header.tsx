@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, ShoppingCart } from "lucide-react";
+import { useCart } from "@/context/CartContext";
 import { BUSINESS_INFO } from "@/lib/data";
 import { Button } from "@/components/ui/button";
 import { ModeToggle } from "@/components/mode-toggle";
@@ -14,6 +15,7 @@ const navLinks = [
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const { totalItems, setIsOpen: setIsCartOpen } = useCart();
   const location = useLocation();
 
   return (
@@ -61,10 +63,35 @@ export function Header() {
             <Button asChild className="btn-primary">
               <Link to="/products">Place Order</Link>
             </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="relative text-muted-foreground hover:text-foreground hidden md:flex"
+              onClick={() => setIsCartOpen(true)}
+            >
+              <ShoppingCart className="w-5 h-5" />
+              {totalItems > 0 && (
+                <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-medium text-primary-foreground animate-fade-in">
+                  {totalItems}
+                </span>
+              )}
+            </Button>
             <ModeToggle />
           </div>
 
-          {/* Mobile Menu Button */}
+          <Button
+            variant="ghost"
+            size="icon"
+            className="relative text-muted-foreground hover:text-foreground md:hidden"
+            onClick={() => setIsCartOpen(true)}
+          >
+            <ShoppingCart className="w-5 h-5" />
+            {totalItems > 0 && (
+              <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-primary text-[10px] font-medium text-primary-foreground animate-fade-in">
+                {totalItems}
+              </span>
+            )}
+          </Button>
           <button
             onClick={() => setIsOpen(!isOpen)}
             className="md:hidden p-2 text-foreground"

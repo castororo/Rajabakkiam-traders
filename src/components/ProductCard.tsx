@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { useCart } from "@/context/CartContext";
+import { Check, Plus } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 // Image imports
 import ricePonni from "@/assets/rice-ponni.jpg";
@@ -64,18 +67,24 @@ interface Product {
   image: string;
 }
 
-interface ProductCardProps {
-  product: Product;
-  onOrder: (productName: string) => void;
-}
 
-export function ProductCard({ product, onOrder }: ProductCardProps) {
+export function ProductCard({ product }: { product: Product }) {
   const [imageLoaded, setImageLoaded] = useState(false);
+  const [selectedSize, setSelectedSize] = useState(product.packSizes[0]);
+  const [isAdded, setIsAdded] = useState(false);
+  const { addToCart } = useCart();
+
   const imageSrc = imageMap[product.image] || ricePonni;
 
+  const handleAddToCart = () => {
+    addToCart(product, selectedSize);
+    setIsAdded(true);
+    setTimeout(() => setIsAdded(false), 2000);
+  };
+
   return (
-    <div className="card-product group">
-      <div className="relative aspect-square overflow-hidden">
+    <div className="card-product group flex flex-col h-full">
+      <div className="relative aspect-square overflow-hidden bg-muted">
         {!imageLoaded && (
           <div className="absolute inset-0 bg-muted animate-pulse" />
         )}
@@ -89,7 +98,7 @@ export function ProductCard({ product, onOrder }: ProductCardProps) {
         />
         <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
         <div className="absolute bottom-4 left-4 right-4">
-          <h3 className="font-serif text-lg font-semibold text-foreground">
+          <h3 className="font-serif text-base font-semibold text-foreground">
             {product.name}
           </h3>
           {product.tamilName && (
@@ -98,26 +107,44 @@ export function ProductCard({ product, onOrder }: ProductCardProps) {
         </div>
       </div>
 
-      <div className="p-4">
-        <p className="text-sm text-muted-foreground mb-3 line-clamp-2">
+      <div className="p-3 flex flex-col flex-1">
+        <p className="text-xs text-muted-foreground mb-3 line-clamp-2">
           {product.description}
         </p>
-        <div className="flex flex-wrap gap-1.5 mb-4">
-          {product.packSizes.map((size) => (
-            <span
-              key={size}
-              className="text-xs px-2 py-1 bg-muted rounded-full text-muted-foreground"
-            >
-              {size}
-            </span>
-          ))}
+
+        <div className="mt-auto space-y-2">
+          <div className="flex items-center gap-2">
+            <span className="text-xs font-medium text-foreground">Size:</span>
+            <Select value={selectedSize} onValueChange={setSelectedSize}>
+              <SelectTrigger className="h-7 w-[90px] text-xs">
+                <SelectValue placeholder="Size" />
+              </SelectTrigger>
+              <SelectContent>
+                {product.packSizes.map((size) => (
+                  <SelectItem key={size} value={size} className="text-xs">
+                    {size}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <Button
+            onClick={handleAddToCart}
+            className={`w-full text-xs h-8 transition-all duration-300 ${isAdded ? "bg-green-600 hover:bg-green-700 text-white" : "btn-primary"}`}
+            disabled={isAdded}
+          >
+            {isAdded ? (
+              <span className="flex items-center gap-1.5 transition-all animate-in fade-in zoom-in">
+                <Check className="w-3.5 h-3.5" /> Added
+              </span>
+            ) : (
+              <span className="flex items-center gap-1.5 transition-all animate-in fade-in zoom-in">
+                <Plus className="w-3.5 h-3.5" /> Add to Cart
+              </span>
+            )}
+          </Button>
         </div>
-        <Button
-          onClick={() => onOrder(product.name)}
-          className="w-full btn-primary text-sm py-2"
-        >
-          Order Now
-        </Button>
       </div>
     </div>
   );

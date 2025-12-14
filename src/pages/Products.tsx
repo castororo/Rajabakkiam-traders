@@ -2,22 +2,15 @@ import { useState } from "react";
 import { Search } from "lucide-react";
 import { Layout } from "@/components/layout/Layout";
 import { ProductCard } from "@/components/ProductCard";
-import { OrderModal } from "@/components/OrderModal";
+
 import { RICE_PRODUCTS, GROCERY_PRODUCTS, PREMIUM_BRANDS } from "@/lib/data";
 import { Input } from "@/components/ui/input";
 
 import heroImage from "@/assets/hero-rice.jpg";
 
 const Products = () => {
-  const [orderModalOpen, setOrderModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<"all" | "rice" | "grocery" | "premium-brand">("all");
-
-  const handleOrder = (productName: string) => {
-    setSelectedProduct(productName);
-    setOrderModalOpen(true);
-  };
 
   const allProducts = [...RICE_PRODUCTS, ...GROCERY_PRODUCTS, ...PREMIUM_BRANDS];
 
@@ -99,14 +92,13 @@ const Products = () => {
               <h2 className="font-serif text-2xl font-bold text-foreground mb-6">
                 Rice Varieties
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
                 {filteredProducts
                   .filter((p) => p.category === "rice")
                   .map((product) => (
                     <ProductCard
                       key={product.id}
                       product={product}
-                      onOrder={handleOrder}
                     />
                   ))}
               </div>
@@ -122,14 +114,13 @@ const Products = () => {
               <h2 className="font-serif text-2xl font-bold text-foreground mb-6">
                 Premium Brands
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
                 {filteredProducts
                   .filter((p) => p.category === "premium-brand")
                   .map((product) => (
                     <ProductCard
                       key={product.id}
                       product={product}
-                      onOrder={handleOrder}
                     />
                   ))}
               </div>
@@ -142,14 +133,13 @@ const Products = () => {
               <h2 className="font-serif text-2xl font-bold text-foreground mb-6">
                 Grocery Staples
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
                 {filteredProducts
                   .filter((p) => p.category === "grocery")
                   .map((product) => (
                     <ProductCard
                       key={product.id}
                       product={product}
-                      onOrder={handleOrder}
                     />
                   ))}
               </div>
@@ -165,12 +155,6 @@ const Products = () => {
           )}
         </div>
       </section>
-
-      <OrderModal
-        isOpen={orderModalOpen}
-        onClose={() => setOrderModalOpen(false)}
-        productName={selectedProduct}
-      />
     </Layout>
   );
 };

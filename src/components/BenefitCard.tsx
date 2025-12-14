@@ -19,19 +19,19 @@ interface BenefitCardProps {
 
 export function BenefitCard({ benefit, index }: BenefitCardProps) {
   const IconComponent = iconMap[benefit.icon] || Award;
-  
+
   return (
-    <div 
-      className="text-center p-6 opacity-0 animate-fade-up"
+    <div
+      className="text-center p-4 opacity-0 animate-fade-up"
       style={{ animationDelay: `${index * 0.1}s`, animationFillMode: "forwards" }}
     >
-      <div className="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mx-auto mb-4">
-        <IconComponent className="w-7 h-7 text-primary" />
+      <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-3">
+        <IconComponent className="w-5 h-5 text-primary" />
       </div>
-      <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
+      <h3 className="font-serif text-base font-semibold text-foreground mb-1.5">
         {benefit.title}
       </h3>
-      <p className="text-sm text-muted-foreground">
+      <p className="text-xs text-muted-foreground">
         {benefit.description}
       </p>
     </div>

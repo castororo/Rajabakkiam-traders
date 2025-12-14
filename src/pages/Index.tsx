@@ -1,11 +1,10 @@
-import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Truck, Award, Zap, Phone, MessageCircle, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Layout } from "@/components/layout/Layout";
 import { BenefitCard } from "@/components/BenefitCard";
 import { ProductCard } from "@/components/ProductCard";
-import { OrderModal } from "@/components/OrderModal";
+
 import { BUSINESS_INFO, RICE_PRODUCTS, PREMIUM_BRANDS, BENEFITS } from "@/lib/data";
 
 
@@ -13,15 +12,8 @@ import heroDark from "@/assets/rice_paddy1.png";
 import heroLight from "@/assets/hero-light.png";
 
 const Index = () => {
-  const [orderModalOpen, setOrderModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState("");
 
-  const handleOrder = (productName: string = "") => {
-    setSelectedProduct(productName);
-    setOrderModalOpen(true);
-  };
-
-  const featuredProducts = RICE_PRODUCTS.slice(0, 4);
+  const featuredProducts = RICE_PRODUCTS.slice(0, 5);
   const featuredBrands = PREMIUM_BRANDS.slice(0, 6);
 
   return (
@@ -105,9 +97,9 @@ const Index = () => {
 
           <div className="mt-8 flex items-center justify-center gap-4">
             {/* Button text is kept exactly; only visual updated for both themes */}
-            <button
-              onClick={() => handleOrder()}
-              className="px-6 py-3 rounded-full font-semibold text-base shadow transition-transform active:scale-95"
+            <Link
+              to="/products"
+              className="px-6 py-3 rounded-full font-semibold text-base shadow transition-transform active:scale-95 inline-block"
               style={{
                 background: "linear-gradient(180deg,#FFF1D6 0%, #FFDFA8 100%)",
                 color: "#2b1a00",
@@ -116,7 +108,7 @@ const Index = () => {
               }}
             >
               Explore Our Collection
-            </button>
+            </Link>
           </div>
         </div>
       </section>
@@ -135,7 +127,7 @@ const Index = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-8">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(160px,1fr))] gap-4 md:gap-8">
             {BENEFITS.map((benefit, index) => (
               <BenefitCard key={benefit.title} benefit={benefit} index={index} />
             ))}
@@ -164,12 +156,11 @@ const Index = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
             {featuredProducts.map((product) => (
               <ProductCard
                 key={product.id}
                 product={product}
-                onOrder={handleOrder}
               />
             ))}
           </div>
@@ -197,9 +188,9 @@ const Index = () => {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-6">
             {featuredBrands.map((brand) => (
-              <ProductCard key={brand.id} product={brand} onOrder={handleOrder} />
+              <ProductCard key={brand.id} product={brand} />
             ))}
           </div>
         </div>
@@ -215,9 +206,11 @@ const Index = () => {
             Call us or place your order online. We'll deliver fresh rice and groceries to your doorstep.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button onClick={() => handleOrder()} className="btn-primary text-base px-8 py-6">
-              Place an Order
-            </Button>
+            <Link to="/products">
+              <Button className="btn-primary text-base px-8 py-6 w-full sm:w-auto">
+                Place an Order
+              </Button>
+            </Link>
             <a
               href={BUSINESS_INFO.whatsappLink}
               target="_blank"
@@ -230,12 +223,6 @@ const Index = () => {
           </div>
         </div>
       </section>
-
-      <OrderModal
-        isOpen={orderModalOpen}
-        onClose={() => setOrderModalOpen(false)}
-        productName={selectedProduct}
-      />
     </Layout>
   );
 };

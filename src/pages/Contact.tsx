@@ -21,10 +21,29 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+
+    // basic validation
+    if (!formData.name || !formData.message) {
+      toast({
+        title: "Missing Information",
+        description: "Please fill in your name and message.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    const message = `Hello Raajabaackiam Traders,\n\nI have an inquiry:\n\n*Name*: ${formData.name}\n*Phone*: ${formData.phone || "Not provided"}\n*Email*: ${formData.email || "Not provided"}\n\n*Message*:\n${formData.message}`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const phoneNumber = BUSINESS_INFO.phone.replace(/[^0-9]/g, "");
+
+    window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, "_blank");
+
     toast({
-      title: "Message Sent!",
-      description: "We'll get back to you within 24 hours.",
+      title: "Opening WhatsApp...",
+      description: "Redirecting you to chat with us.",
     });
+
     setFormData({ name: "", email: "", phone: "", message: "" });
   };
 
